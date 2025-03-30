@@ -10,6 +10,14 @@ void main() async {
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cHl1dHVzZGhlc3ltaXN3anpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMyNzE5ODgsImV4cCI6MjA1ODg0Nzk4OH0.JDJsqRTGl-hsPMta12DthP9vh6cEkRKUwyETyhD_BFA',
   );
+  
+//   i commented these incase you need to use them latter
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:ilays_team/AI_ask/AI_Pages/chat_page.dart';
+
+// Future<void> main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await dotenv.load(fileName: ".env"); // Load the .env file
   runApp(const MyApp());
 }
 
@@ -118,5 +126,10 @@ class StyledButton extends StatelessWidget {
         ),
       ),
     );
+    
+//     here also i commented them
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(debugShowCheckedModeBanner: false, home: ChatPage());
   }
 }
