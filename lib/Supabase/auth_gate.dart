@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-// ignore: unused_import
 import '../screens/login_screen.dart';
+import '../screens/profile_page.dart'; // Import Profile Page
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
+    return StreamBuilder<AuthState>(
       // Listen to auth state changes
       stream: Supabase.instance.client.auth.onAuthStateChange,
 
       // Build appropriate page based on auth state
       builder: (context, snapshot) {
-        // loading..
+        // Show loading indicator while waiting
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
-          ); // Scaffold
+          );
         }
 
-        // check if there is a valid session currently
-        final session = snapshot.hasData ? snapshot.data!.session : null;
+        // Check if user has an active session
+        final session = Supabase.instance.client.auth.currentSession;
 
         if (session != null) {
-          return LoginScreen();
+          return const ProfilePage(); // Redirect to Profile Page
         } else {
-          return LoginScreen();
+          return const LoginScreen(); // Stay on Login Screen
         }
       },
     );

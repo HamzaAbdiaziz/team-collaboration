@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ilays_team/Auth/Auth_services.dart';
+import 'package:ilays_team/Supabase/auth_services.dart';
+import 'package:ilays_team/screens/profile_page.dart';
 
 class SignupScreen extends StatefulWidget {
   @override
@@ -32,7 +33,10 @@ class _SignupScreenState extends State<SignupScreen> {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(const SnackBar(content: Text("Signup successful!")));
-        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProfilePage()),
+        );
       } catch (e) {
         ScaffoldMessenger.of(
           context,

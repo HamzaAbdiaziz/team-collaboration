@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ilays_team/Auth/Auth_services.dart';
+import 'package:ilays_team/Supabase/auth_services.dart';
+import 'package:ilays_team/screens/profile_page.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -22,9 +23,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try {
       await authService.signInWithEmailAndPassword(email, password);
-      setState(() {
-        enteredEmail = emailController.text;
-      });
+      // setState(() {
+      //   enteredEmail = emailController.text;
+      // });
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProfilePage()),
+      );
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(
